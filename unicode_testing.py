@@ -1,1 +1,0 @@
-print(u'\xc2\xb7')

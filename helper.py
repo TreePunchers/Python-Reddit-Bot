@@ -13,7 +13,7 @@ def generate_comment(author, min_words=20, words_per=50):
         return part.capitalize()
 
     messages = load_obj('skype_messages')
-    author_markov = Markov(messages[people[author]])
+    author_markov = Markov(messages[people[author].skype_account])
     result = ''
     while len(result.split(' ')) < min_words:
         result += generate_comment_part(author_markov).replace('\n', '').replace('\r', '') + '. '
@@ -28,6 +28,3 @@ def save_obj(obj, name):
 def load_obj(name):
     with open('obj/' + name + '.pkl', 'rb') as f:
         return pickle.load(f)
-
-
-print(generate_comment('christopher', min_words=20))
